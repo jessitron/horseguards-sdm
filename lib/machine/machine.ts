@@ -19,12 +19,12 @@ import {
     AutoCodeInspection,
     Autofix,
     AutofixRegistration,
-    goalContributors,
     goals,
     hasFile,
     not,
     onAnyPush,
     PushImpact,
+    slackReviewListenerRegistration,
     SoftwareDeliveryMachine,
     SoftwareDeliveryMachineConfiguration,
     whenPushSatisfies,
@@ -66,7 +66,7 @@ export function machine(
         });
 
     const autofix = new Autofix().with(AddLicenseFile);
-    const inspect = new AutoCodeInspection();
+    const inspect = new AutoCodeInspection({ reportToSlack: true });
 
     const checkGoals = goals("checks")
         .plan(autofix)
@@ -95,7 +95,8 @@ export function machine(
             },
             autofix: {},
             reviewListeners: isInLocalMode() ? [] : [
-                singleIssuePerCategoryManaging("sdm-pack-spring"),
+                // slackReviewListenerRegistration(),
+                singleIssuePerCategoryManaging("something-something"),
             ],
         }),
         codeMetrics(),

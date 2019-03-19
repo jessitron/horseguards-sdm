@@ -9,7 +9,7 @@
     "sourceMap": true,
     "lib": [
       "DOM",
-      "ES2017",
+      "es2017",
       "DOM.Iterable",
       "ScriptHost",
       "esnext.asynciterable"
@@ -19,11 +19,20 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noUnusedLocals": false,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "skipLibCheck": true
   },
-  "include": ["index.ts", "bin/*.ts", "lib/**/*.ts", "test/**/*.ts"],
-  "exclude": [".#*"],
+  "include": [
+    "index.ts",
+    "bin/*.ts",
+    "lib/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    ".#*",
+    "../../atomist/**/*.ts",
+  ],
   "compileOnSave": true,
   "buildOnSave": false,
   "atom": {

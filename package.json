@@ -24,7 +24,7 @@
   "types": "./index.d.ts",
   "dependencies": {
     "@atomist/automation-client": "^1.2.0",
-    "@atomist/sdm": "^1.2.0",
+    "@atomist/sdm": "^1.3.0-nortissej.progressLog-codeInspect.20190204221749",
     "@atomist/sdm-core": "^1.2.0",
     "@atomist/sdm-pack-build": "^1.0.3",
     "@atomist/sdm-pack-issue": "^1.1.0",
