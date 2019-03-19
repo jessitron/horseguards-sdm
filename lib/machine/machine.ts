@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { GitHubRepoRef } from "@atomist/automation-client";
+import { GitHubRepoRef, logger } from "@atomist/automation-client";
 import {
     AutoCodeInspection,
     Autofix,
@@ -67,6 +67,23 @@ export function machine(
 
     const autofix = new Autofix().with(AddLicenseFile);
     const inspect = new AutoCodeInspection({ reportToSlack: true });
+
+    sdm.addCommand<{ parameter_name_1: string }>({
+        name: "MyCommandName",
+        intent: "type this in chat to invoke the command",
+        parameters: {
+            parameter_name_1: { required: true },
+        },
+        listener: async cli => {
+            await cli.addressChannels({
+                text: "Hello " + cli.parameters.parameter_name_1,
+                attachments: [{ fallback: "boo", text: "bananas", title: "carrots" }],
+            });
+            return {
+                code: 0,
+            };
+        },
+    });
 
     const checkGoals = goals("checks")
         .plan(autofix)
